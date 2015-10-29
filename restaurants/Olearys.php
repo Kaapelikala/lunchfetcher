@@ -11,7 +11,6 @@ class Olearys extends Lunch
     {
         $doc = new DOMDocument();
         @$doc->loadHTML($html);
-
         $xpath = new DOMXpath($doc);
 
         $elements = $xpath->query(

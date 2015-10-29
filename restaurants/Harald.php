@@ -47,6 +47,5 @@ class Harald extends Lunch
         }
 
         return false;
-
     }
 }

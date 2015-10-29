@@ -5,10 +5,9 @@ class Lunch
     public function __run()
     {
         $this->restaurantsFolder = __DIR__ . '/restaurants';
-        $this->settingsFile = __DIR__ . '/settings.json';
         $this->dateN = date("N", time());
-
-        $this->listRestaurants();
+        $this->lunch = array();
+        $this->fetchAndParseLunches();
     }
 
     protected function weekNumToText($weekNum)
@@ -19,7 +18,6 @@ class Lunch
             case 2: return 'Wednesday'; break;
             case 3: return 'Thursday'; break;
             case 4: return 'Friday'; break;
-            default: return 'dunnolol';
         }
     }
 
@@ -69,7 +67,7 @@ class Lunch
         );
     }
 
-    private function listRestaurants()
+    private function fetchAndParseLunches()
     {
         if (!is_dir($this->restaurantsFolder)) {
             mkdir($this->restaurantsFolder);
@@ -100,6 +98,8 @@ class Lunch
                         );
 
                         var_dump($lunchArray);
+
+                        $currentDay = $this->weekNumToText($this->dateN);
                     }
                 } catch (Exception $e) {
                     var_dump($e);
@@ -107,6 +107,7 @@ class Lunch
             }
         }
     }
+
 }
 
 $l = new Lunch();
