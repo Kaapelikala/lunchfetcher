@@ -37,7 +37,7 @@ class Harald extends Lunch
                 }
             }
             $weekDay = parent::weekNumToText($i);
-            $arr[$weekDay] = trim(utf8_decode(implode(' / ', $dayMenu)));
+            $arr[$weekDay] = trim(implode(' / ', $dayMenu));
             $i++;
         }
 

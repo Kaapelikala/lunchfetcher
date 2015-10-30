@@ -8,13 +8,13 @@ array(2) {
     ["Monday"]=>
     string(120) "Alankomaan Ruhtinaan juustokeittoa / Rapeaksi paistettua hietakampelaa, kurkkukastia / Jauhelihapihvi pippurikastin kera"
     ["Tuesday"]=>
-    string(113) "Verkonpaikkaajan kalakeittoa / Lanttu-spelttikukkoa ja sienikastia / Mets�nk�vij�n riistak�ristyst� ja pottuvoita"
+    string(118) "Verkonpaikkaajan kalakeittoa / Lanttu-spelttikukkoa ja sienikastia / Metsänkävijän riistakäristystä ja pottuvoita"
     ["Wednesday"]=>
-    string(118) "Nannan kasvisgulassikeittoa / Rudolf Rohkean uunimakkaraa olutsipulin kera / Paistettuja silakkapihvej� ja skyrmoussea"
+    string(119) "Nannan kasvisgulassikeittoa / Rudolf Rohkean uunimakkaraa olutsipulin kera / Paistettuja silakkapihvejä ja skyrmoussea"
     ["Thursday"]=>
-    string(126) "Helgan hernekeittoa ja pannaria / Yrttivoissa paistettua lohta ja balsamicokastia / Sieni-kasvispaistoksella t�ytetty r�isk�le"
+    string(129) "Helgan hernekeittoa ja pannaria / Yrttivoissa paistettua lohta ja balsamicokastia / Sieni-kasvispaistoksella täytetty räiskäle"
     ["Friday"]=>
-    string(118) "Mets�nk�vij�n herkkutattikeittoa / Juuresliemess� haudutettuja rantamuikkuja / Broilerinrintaa vuohenjuustokastin kera"
+    string(122) "Metsänkävijän herkkutattikeittoa / Juuresliemessä haudutettuja rantamuikkuja / Broilerinrintaa vuohenjuustokastin kera"
   }
 }
 array(2) {
