@@ -2,6 +2,23 @@
 ```
 array(2) {
   ["restaurant"]=>
+  string(8) "Bruuveri"
+  ["lunchList"]=>
+  array(5) {
+    ["Monday"]=>
+    string(102) "Tomaattikeittoa L,G / Lihapullia pippurikastikkeessa L / Curry-inkivrikanapataa L,G / Ratatouillea L,G"
+    ["Tuesday"]=>
+    string(100) "Kanakeittoa L,G / Kaalikryleit L,G / Tomaatti-mozzarellakalaa VL / Pinaatti-valkosipuliuunipastaa VL"
+    ["Wednesday"]=>
+    string(141) "Metssienikeittoa L,G / Kevyesti paahdettua porsaanfileet tummalla olutkastikkeella L / Uunilohta nokkoskastikkeella L,G / Kasvisrisottoa VL,G"
+    ["Thursday"]=>
+    string(116) "Kasvis-kookoskeittoa L,G / Kalkkunapihvej ja cheddarsalsaa VL,G / Yrttist riistapataa L,G / Kasvisvehnnjyvpilahvia L"
+    ["Friday"]=>
+    string(104) "Mustajuurikeittoa L,G / Uunilohta ja tartarkastiketta L,G / Hrk-metssienipataa L,G / Kasviskiusausta L,G"
+  }
+}
+array(2) {
+  ["restaurant"]=>
   string(6) "Harald"
   ["lunchList"]=>
   array(5) {
