@@ -2,13 +2,11 @@
 
 class Harald extends Lunch
 {
-
     protected $url = "http://www.ravintolaharald.fi/ruoka--ja-juomalistat/lounas";
-//    protected $url = "http://topkekeke.com/harald.html";
     protected $postData = array();
     protected $referer = "";
     protected $gzipped = false;
-    protected $enabled = false;
+    protected $enabled = true;
 
     protected function HTMLtoLunchArray($html)
     {

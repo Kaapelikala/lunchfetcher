@@ -2,11 +2,10 @@
 
 class KarlJohan extends Lunch
 {
-
     protected $url = "http://www.ravintolakarljohan.fi/lounas/";
     protected $postData = array();
     protected $referer = "";
-    protected $gzipped = true;
+    protected $gzipped = false;
     protected $enabled = true;
 
     protected function HTMLtoLunchArray($html)

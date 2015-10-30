@@ -19,6 +19,15 @@ array(2) {
 }
 array(2) {
   ["restaurant"]=>
+  string(9) "KarlJohan"
+  ["lunchList"]=>
+  array(1) {
+    ["Friday"]=>
+    string(90) "GULASSIKEITTO (L,G) / LIHAMUREKE, KAPRISKASTIKE (VL) / UUNIPERUNA SAVUPOROT�YTTEELL� (L,G)"
+  }
+}
+array(2) {
+  ["restaurant"]=>
   string(7) "Olearys"
   ["lunchList"]=>
   array(5) {

@@ -5,7 +5,8 @@ class Olearys extends Lunch
     protected $url = "http://www.olearys.fi/forumhelsinki/menu/mainmenu";
     protected $postData = array();
     protected $referer = "";
-    protected $gzipped = TRUE;
+    protected $gzipped = true;
+    protected $enabled = true;
 
     protected function HTMLtoLunchArray($html)
     {
