@@ -91,15 +91,17 @@ class Lunch
                         require_once($this->restaurantsFolder.'/'.$rClass);
 
                         $x = new $className;
-                        $request = $this->curlRequest($x->url, $x->postData, $x->referer, $x->gzipped);
-                        $lunchArray = array(
-                            'restaurant' => $className,
-                            'lunchList' => $x->HTMLtoLunchArray($request['contents']),
-                        );
+                        if (true === $x->enabled) {
+                            $request = $this->curlRequest($x->url, $x->postData, $x->referer, $x->gzipped);
+                            $lunchArray = array(
+                                'restaurant' => $className,
+                                'lunchList' => $x->HTMLtoLunchArray($request['contents']),
+                            );
 
-                        var_dump($lunchArray);
-
-                        $currentDay = $this->weekNumToText($this->dateN);
+                            var_dump($lunchArray);
+                        } else {
+                            echo 'disabled: '.$className.PHP_EOL;
+                        }
                     }
                 } catch (Exception $e) {
                     var_dump($e);

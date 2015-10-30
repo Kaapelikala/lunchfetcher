@@ -1,14 +1,13 @@
 <?php
 
-class Harald extends Lunch
+class KarlJohan extends Lunch
 {
 
-    protected $url = "http://www.ravintolaharald.fi/ruoka--ja-juomalistat/lounas";
-//    protected $url = "http://topkekeke.com/harald.html";
+    protected $url = "http://www.ravintolakarljohan.fi/lounas/";
     protected $postData = array();
     protected $referer = "";
-    protected $gzipped = false;
-    protected $enabled = false;
+    protected $gzipped = true;
+    protected $enabled = true;
 
     protected function HTMLtoLunchArray($html)
     {
@@ -18,29 +17,23 @@ class Harald extends Lunch
 
         $dElements = array(
             0 => array(2, 3, 4),
-            1 => array(8, 9, 10),
-            2 => array(14, 15, 16),
-            3 => array(20, 21, 22),
-            4 => array(26, 27, 28),
         );
 
         $arr = array();
-        $i = 0;
 
         foreach ($dElements as $dId => $dArr) {
             $dayMenu = array();
             foreach ($dArr as $dRow) {
                 $element = $xpath->query(
-                    '//*[@id="lounaslistaTable"]/tr['.$dRow.']/td[1]'
+                    '/html/body/div[2]/div/div/div/div/div['.$dRow.']/div[1]'
                 );
 
                 foreach ($element as $e) {
                     $dayMenu[] = trim($e->nodeValue);
                 }
             }
-            $weekDay = parent::weekNumToText($i);
+            $weekDay = parent::weekNumToText(date("N", time()) - 1);
             $arr[$weekDay] = trim(utf8_decode(implode(' / ', $dayMenu)));
-            $i++;
         }
 
         if (!empty($arr)) {
