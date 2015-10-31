@@ -31,7 +31,7 @@ class KarlJohan extends Lunch
                     $dayMenu[] = trim($e->nodeValue);
                 }
             }
-            $weekDay = parent::weekNumToText(date("N", time()) - 1);
+            $weekDay = parent::today();
             $arr[$weekDay] = trim(utf8_decode(implode(' / ', $dayMenu)));
         }
 

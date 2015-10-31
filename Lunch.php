@@ -1,13 +1,44 @@
 <?php
 
+require 'slack-api/Slack.php';
+
 class Lunch
 {
     public function __run()
     {
         $this->restaurantsFolder = __DIR__ . '/restaurants';
-        $this->dateN = date("N", time());
         $this->lunch = array();
+        $this->slackKey = trim(file_get_contents('slack.key'));
+        $this->lunches = array();
         $this->fetchAndParseLunches();
+        var_dump($this->lunches);
+        $this->lunchesToSlack($this->lunches);
+    }
+
+    protected function lunchesToSlack($lunchArray)
+    {
+        $text = "Lunches for *".$this->today()."*".PHP_EOL;
+        foreach ($lunchArray as $restaurant => $menu)
+        {
+            $text .= "*".$restaurant."* ".$menu.PHP_EOL;
+        }
+
+        $Slack = new Slack($this->slackKey);
+
+        print_r($Slack->call('chat.postMessage', array(
+            'icon_url' => 'http://i.imgur.com/PWxRcm1.png',
+            'channel' => '#topkek',
+            'username' => 'lunch',
+            'text' => $text,
+            'parse' => 'full',
+        )));
+
+    }
+
+    protected function today()
+    {
+        return "Friday";
+        return $this->weekNumTotext(date("N", time()));
     }
 
     protected function weekNumToText($weekNum)
@@ -105,12 +136,15 @@ class Lunch
                         $x = new $className;
                         if (true === $x->enabled) {
                             $request = $this->curlRequest($x->url, $x->postData, $x->referer, $x->gzipped);
-                            $lunchArray = array(
+
+                            $reqArray = array(
                                 'restaurant' => $className,
                                 'lunchList' => $x->HTMLtoLunchArray($request['contents']),
                             );
 
-                            var_dump($lunchArray);
+                            $lunchArray[] = $reqArray;
+
+                            $this->lunches[$className] = $reqArray['lunchList'][$this->today()];
                         } else {
                             echo 'disabled: '.$className.PHP_EOL;
                         }
