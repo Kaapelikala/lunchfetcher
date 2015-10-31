@@ -3,7 +3,7 @@
 git clone https://github.com/joonaskaskisola/lunchfetcher.git
 cd lunchfetcher/
 nano slack.key # add slack key to slack.key file
-git clone https://github.com/joonaskaskisola/slack-api
+git clone https://github.com/joonaskaskisola/slack-api.git
 ```
 
 # lunchfetcher
