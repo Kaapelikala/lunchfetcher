@@ -60,4 +60,21 @@ array(2) {
     string(31) "Kalkkuna- makkaragumbo, riisiä"
   }
 }
+array(2) {
+  ["restaurant"]=>
+  string(5) "Posti"
+  ["lunchList"]=>
+  array(5) {
+    ["Monday"]=>
+    string(239) "Burgundinpataa (G, L, M, VS, *) / Höyrytettyä tummaa riisiä (G, L, M) / Aasialaisia linssipihvejä (A, L, M, VS, �*) / Paahdettuja perunoita (G, L, M, Veg) / Avokado-majoneesikastiketta (A, G, L, M, VS) / Bataattisosekeittoa (G, L, VS )"
+    ["Tuesday"]=>
+    string(200) "Savukalalasagnea (A, L, VS) / Maissi-bataatticurrya (G, �L, M, Veg) / Höyrytettyä tummaa riisiä (G, L, M, Veg) / Palsternakka-inkiväärisosekeittoa (A, G, L) / Paahdettua mantelirouhetta (G, L, M)"
+    ["Wednesday"]=>
+    string(170) "Jauhelihapihvejä pekoni-tomaattikastikkeessa (A, L, M, VS) / Perunasosetta (A, G, L, *) / Juusto-kasvispastaa (A, L, VS) / Täyteläistä mustajuurisosekeittoa (A, G, L)"
+    ["Thursday"]=>
+    string(237) "Kanaa mantelikastikkeessa (A, G, L, VS) / Luomutofua ja kasviksia kormakastikkeessa (A, G, L, VS, *) / Jasminriisiä (G, L, M) / Perinteistä hernekeittoa (A, G, L, M) / Pannukakkua (A) / Mansikkahilloa (G, L, M) / Kermavaahtoa (A, G, L)"
+    ["Friday"]=>
+    string(253) "Glaseerattua porsaanniskaa (A, G, L, M) / Yrtti-lohkoperunoita (G, L, M, Veg) / Höyrytettyä tummaa riisiä (G, L, M) / Tomaattista munakoisopataa (G, L, M, VS, Veg, *) / Paahdettuja porkkanoita (G, L, M) / Tomaattikeittoa ja fetajuustoa (A, G, VS, VL)"
+  }
+}
 ```
