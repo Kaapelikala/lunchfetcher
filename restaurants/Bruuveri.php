@@ -8,18 +8,6 @@ class Bruuveri extends Lunch
     protected $gzipped = true;
     protected $enabled = true;
 
-    protected function cleanStr($string) {
-        $strArr = str_split($string);
-        $cleanStr = '';
-        foreach ($strArr as $aChar) {
-            $charNo = ord($aChar);
-            if ($charNo > 31 && $charNo < 127 || $charNo == 10 || $charNo == 163) {
-                $cleanStr .= $aChar;
-            }
-        }
-        return $cleanStr;
-    }
-
     protected function HTMLtoLunchArray($html)
     {
         $doc = new DOMDocument();
@@ -37,7 +25,7 @@ class Bruuveri extends Lunch
         $lunchListInArray = explode('<hr class="mini">', $lunchListInHTML);
 
         foreach ($lunchListInArray as $lunchPerDay) {
-            $lunchPerDay = $this->cleanStr($lunchPerDay);
+            $lunchPerDay = parent::cleanStr($lunchPerDay);
 
             $foods = preg_replace('/^[a-zA-Z]{2} [0-9]{1,2}\.[0-9]{1,2}\./', '', trim(strip_tags($lunchPerDay)));
             $foodsArray = explode(PHP_EOL, $foods);

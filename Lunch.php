@@ -21,6 +21,18 @@ class Lunch
         }
     }
 
+    protected function cleanStr($string) {
+        $strArr = str_split($string);
+        $cleanStr = '';
+        foreach ($strArr as $aChar) {
+            $charNo = ord($aChar);
+            if ($charNo > 31 && $charNo < 127 || $charNo == 10 || $charNo == 163) {
+                $cleanStr .= $aChar;
+            }
+        }
+        return $cleanStr;
+    }
+
     private function curlRequest($url, $post_data = array(), $referer = null, $page_is_gzipped = FALSE)
     {
         $ch = curl_init();
