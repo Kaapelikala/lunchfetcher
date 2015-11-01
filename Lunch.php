@@ -2,7 +2,7 @@
 
 class Lunch
 {
-    public function __construct($slackKey, $slackChannel)
+    public function __construct($slackKey, $slackChannel = '#general')
     {
         $this->restaurantsFolder = __DIR__ . '/restaurants';
 
