@@ -8,6 +8,10 @@ class KarlJohan extends Lunch
     protected $gzipped = false;
     protected $enabled = true;
 
+    public function __construct()
+    {
+    }
+
     protected function HTMLtoLunchArray($html)
     {
         $doc = new DOMDocument();

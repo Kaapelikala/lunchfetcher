@@ -1,17 +1,17 @@
 <?php
 
-require 'slack-api/Slack.php';
+require __DIR__ . 'slack-api/Slack.php';
 
 class Lunch
 {
-    public function __run()
+    public function __construct($slackKey, $slackChannel)
     {
         $this->restaurantsFolder = __DIR__ . '/restaurants';
         $this->lunch = array();
-        $this->slackKey = trim(file_get_contents('slack.key'));
+        $this->slackKey = $slackKey;
+        $this->slackChannel = $slackChannel;
         $this->lunches = array();
         $this->fetchAndParseLunches();
-        var_dump($this->lunches);
         $this->lunchesToSlack($this->lunches);
     }
 
@@ -25,19 +25,17 @@ class Lunch
 
         $Slack = new Slack($this->slackKey);
 
-        print_r($Slack->call('chat.postMessage', array(
+        $Slack->call('chat.postMessage', array(
             'icon_url' => 'http://i.imgur.com/PWxRcm1.png',
-            'channel' => '#topkek',
+            'channel' => $this->slackChannel,
             'username' => 'lunch',
             'text' => $text,
             'parse' => 'full',
-        )));
-
+        ));
     }
 
     protected function today()
     {
-        return "Friday";
         return $this->weekNumTotext(date("N", time()));
     }
 
@@ -155,8 +153,4 @@ class Lunch
             }
         }
     }
-
 }
-
-$l = new Lunch();
-$l->__run();

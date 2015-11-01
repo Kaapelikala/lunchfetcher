@@ -8,6 +8,10 @@ class Posti extends Lunch
     protected $gzipped = false;
     protected $enabled = true;
 
+    public function __construct()
+    {
+    }
+
     protected function HTMLtoLunchArray($html)
     {
         $xml = simplexml_load_string($html);

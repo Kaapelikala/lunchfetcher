@@ -8,6 +8,10 @@ class Olearys extends Lunch
     protected $gzipped = true;
     protected $enabled = true;
 
+    public function __construct()
+    {
+    }
+
     protected function HTMLtoLunchArray($html)
     {
         $doc = new DOMDocument();
