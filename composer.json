@@ -1,0 +1,10 @@
+{
+    "name": "joonas/lunchfetcher",
+    "authors": [
+        {
+            "name": "Joonas",
+            "email": "joonas.kaskisola@gmail.com"
+        }
+    ],
+    "require": {}
+}
