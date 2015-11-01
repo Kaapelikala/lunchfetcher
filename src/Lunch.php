@@ -5,10 +5,13 @@ class Lunch
     public function __construct($slackKey, $slackChannel)
     {
         $this->restaurantsFolder = __DIR__ . '/restaurants';
+
         $this->lunch = array();
+        $this->lunches = array();
+
         $this->slackKey = $slackKey;
         $this->slackChannel = $slackChannel;
-        $this->lunches = array();
+
         $this->fetchAndParseLunches();
         $this->lunchesToSlack();
     }
@@ -41,11 +44,7 @@ class Lunch
         $result = curl_exec($ch);
         curl_close($ch);
 
-        if ($result) {
-            echo json_decode($result);
-        }
-
-        return false;
+        return true;
     }
 
     protected function today()
