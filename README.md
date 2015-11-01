@@ -1,7 +1,6 @@
 # Install
 ```
 git clone https://github.com/joonaskaskisola/lunchfetcher.git lunchfetcher/
-git clone https://github.com/joonaskaskisola/slack-api.git lunchfetcher/slack-api/
 ```
 
 # Usage
