@@ -49,7 +49,7 @@ class Lunch
 
     protected function today()
     {
-        return $this->weekNumTotext(date("N", time()));
+        return $this->weekNumTotext(date("N", time()) - 1);
     }
 
     protected function weekNumToText($weekNum)
