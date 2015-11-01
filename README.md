@@ -6,7 +6,7 @@ git clone https://github.com/joonaskaskisola/slack-api.git lunchfetcher/slack-ap
 
 # Usage
 ```
-require_once 'lunchfetcher.php';
+require_once '/path/to/Lunch.php';
 $l = new Lunch('slack-api-key', '#slack_channel');
 ```
 
