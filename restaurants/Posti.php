@@ -4,7 +4,7 @@ class Posti extends Lunch
 {
     protected $url = "http://www.fazer.fi/api/location/menurss/current?pageId=900&language=fi";
     protected $postData = array();
-    protected $referer = "";
+    protected $refererUrl = "";
     protected $gzipped = false;
     protected $enabled = true;
 
@@ -54,7 +54,7 @@ class Posti extends Lunch
                 $arr = array();
                 foreach ($foodArrs as $weekDay => $foodArr)
                 {
-                    $arr[$weekDay] = implode(' / ', $foodArr);
+                    $arr[$weekDay] = parent::fixSpaces(implode(' / ', $foodArr));
                 }
 
                continue 2;

@@ -4,7 +4,7 @@ class KarlJohan extends Lunch
 {
     protected $url = "http://www.ravintolakarljohan.fi/lounas/";
     protected $postData = array();
-    protected $referer = "";
+    protected $refererUrl = "";
     protected $gzipped = false;
     protected $enabled = true;
 
@@ -36,7 +36,7 @@ class KarlJohan extends Lunch
                 }
             }
             $weekDay = parent::today();
-            $arr[$weekDay] = trim(utf8_decode(implode(' / ', $dayMenu)));
+            $arr[$weekDay] = parent::fixSpaces(trim(utf8_decode(implode(' / ', $dayMenu))));
         }
 
         if (!empty($arr)) {

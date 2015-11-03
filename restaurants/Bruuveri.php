@@ -4,7 +4,7 @@ class Bruuveri extends Lunch
 {
     protected $url = "http://bruuveri.fi/lounas/";
     protected $postData = array();
-    protected $referer = "";
+    protected $refererUrl = "";
     protected $gzipped = true;
     protected $enabled = true;
 
@@ -36,11 +36,11 @@ class Bruuveri extends Lunch
 
             $dayMenu = array();
             foreach ($foodsArray as $food) {
-                $dayMenu[] = $food;
+                $dayMenu[] = preg_replace('/ ([a-zA-Z,]+)$/', ' (${1})', parent::cleanStr($food));
             }
 
             $weekDay = parent::weekNumToText($i);
-            $arr[$weekDay] = implode(' / ', $dayMenu);
+            $arr[$weekDay] = parent::fixSpaces(implode(' / ', $dayMenu));
             $i++;
         }
 

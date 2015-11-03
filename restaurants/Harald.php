@@ -4,7 +4,7 @@ class Harald extends Lunch
 {
     protected $url = "http://www.ravintolaharald.fi/ruoka--ja-juomalistat/lounas";
     protected $postData = array();
-    protected $referer = "";
+    protected $refererUrl = "";
     protected $gzipped = false;
     protected $enabled = true;
 
@@ -41,7 +41,7 @@ class Harald extends Lunch
                 }
             }
             $weekDay = parent::weekNumToText($i);
-            $arr[$weekDay] = trim(implode(' / ', $dayMenu));
+            $arr[$weekDay] = parent::fixSpaces(trim(implode(' / ', $dayMenu)));
             $i++;
         }
 

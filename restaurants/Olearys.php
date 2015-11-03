@@ -4,7 +4,7 @@ class Olearys extends Lunch
 {
     protected $url = "http://www.olearys.fi/forumhelsinki/menu/mainmenu";
     protected $postData = array();
-    protected $referer = "";
+    protected $refererUrl = "";
     protected $gzipped = true;
     protected $enabled = true;
 
@@ -30,7 +30,7 @@ class Olearys extends Lunch
                 $nodes = $element->childNodes;
                 foreach ($nodes as $node) {
                     $weekDay = parent::weekNumToText($i);
-                    $arr[$weekDay] = trim(utf8_decode($node->nodeValue));
+                    $arr[$weekDay] = parent::fixSpaces(trim(utf8_decode($node->nodeValue)));
                     $i++;
                 }
             }

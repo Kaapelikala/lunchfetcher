@@ -4,7 +4,7 @@ class FunkyBurger extends Lunch
 {
     protected $url = "http://funkyburger.net/";
     protected $postData = array();
-    protected $referer = "";
+    protected $refererUrl = "";
     protected $gzipped = false;
     protected $enabled = true;
 
@@ -36,11 +36,19 @@ class FunkyBurger extends Lunch
                 );
 
                 foreach ($element as $e) {
-                    $dayMenu = str_replace(PHP_EOL, ' / ', trim($e->nodeValue));
+                    $dayMenuExploded = explode(PHP_EOL, $e->nodeValue);
+                    $foodArray = array();
+                    foreach ($dayMenuExploded as $foods) {
+                        $foods = parent::cleanStr($foods);
+                        if (!empty($foods)) {
+                            $foodArray[] = preg_replace('/([\t0-9, ]+$)/', '', $foods);
+                        }
+                    }
+                    $dayMenu = implode(' / ', $foodArray);
                 }
             }
             $weekDay = parent::weekNumToText($dId);
-            $arr[$weekDay] = trim(utf8_decode($dayMenu));
+            $arr[$weekDay] = parent::fixSpaces(preg_replace('/[0-9, ]+$/', '', $dayMenu));
         }
 
         if (!empty($arr)) {

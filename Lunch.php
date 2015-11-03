@@ -63,19 +63,25 @@ class Lunch
         }
     }
 
-    protected function cleanStr($string) {
+    protected function fixSpaces($string)
+    {
+        return preg_replace('/[ ]{2,}/', ' ', $string);
+    }
+
+    protected function cleanStr($string)
+    {
         $strArr = str_split($string);
         $cleanStr = '';
-        foreach ($strArr as $aChar) {
-            $charNo = ord($aChar);
-            if ($charNo > 31 && $charNo < 127 || $charNo == 10 || $charNo == 163) {
-                $cleanStr .= $aChar;
+        foreach ($strArr as $asciiChar) {
+            $charNum = ord($asciiChar);
+            if ($charNum > 31 && $charNum < 127 || $charNum == 10 || $charNum == 163) {
+                $cleanStr .= $asciiChar;
             }
         }
         return $cleanStr;
     }
 
-    private function curlRequest($url, $post_data = array(), $referer = null, $page_is_gzipped = FALSE)
+    private function curlRequest($url, $postData = array(), $refererUrl = null, $gzippedPage = FALSE)
     {
         $ch = curl_init();
 
@@ -86,11 +92,11 @@ class Lunch
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 
-        if (null !== $referer) {
-            curl_setopt($ch, CURLOPT_REFERER, $referer);
+        if (null !== $refererUrl) {
+            curl_setopt($ch, CURLOPT_REFERER, $refererUrl);
         }
 
-        $http_header = array(
+        $httpHeader = array(
             'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/' . '*;q=0.8',
             'Accept-Encoding: gzip, deflate',
             'Accept-Language: en-US,en;q=0.8',
@@ -101,33 +107,33 @@ class Lunch
             'Pragma: no-cache',
         );
 
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $http_header);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $httpHeader);
 
-        $retrieved_page = curl_exec($ch);
+        $retrievedPage = curl_exec($ch);
 
-        if ($page_is_gzipped) {
+        if ($gzippedPage) {
             if (function_exists('gzdecode')) {
-                $retrieved_page = gzdecode($retrieved_page);
+                $retrievedPage = gzdecode($retrievedPage);
             } else {
-                $retrieved_page = gzinflate(substr($retrieved_page, 10, -8));
+                $retrievedPage = gzinflate(substr($retrievedPage, 10, -8));
             }
         }
 
-        $curl_info = curl_getinfo($ch);
-
         return array(
-            'curl_info' => $curl_info,
-            'contents' => $retrieved_page
+            'curl_info' => curl_getinfo($ch),
+            'contents' => $retrievedPage
         );
     }
 
     private function fetchAndParseLunches()
     {
         if (!is_dir($this->restaurantsFolder)) {
-            mkdir($this->restaurantsFolder);
 
+            mkdir($this->restaurantsFolder);
             return array();
+
         } else {
+
             $rClasses = array_diff(
                 scandir($this->restaurantsFolder),
                 array(
@@ -137,16 +143,15 @@ class Lunch
             );
 
             foreach ($rClasses as $rClass) {
-                try {
-                    if ($rClass != '.' && $rClass != '..') {
-
+                if ($rClass != '.' && $rClass != '..') {
+                    try {
                         $className = preg_replace('/\.php$/', '', $rClass);
 
                         require_once($this->restaurantsFolder.'/'.$rClass);
 
                         $x = new $className;
                         if (true === $x->enabled) {
-                            $request = $this->curlRequest($x->url, $x->postData, $x->referer, $x->gzipped);
+                            $request = $this->curlRequest($x->url, $x->postData, $x->refererUrl, $x->gzipped);
 
                             $reqArray = array(
                                 'restaurant' => $className,
@@ -159,9 +164,9 @@ class Lunch
                         } else {
                             echo 'disabled: '.$className.PHP_EOL;
                         }
+                    } catch (Exception $e) {
+                        var_dump($e);
                     }
-                } catch (Exception $e) {
-                    var_dump($e);
                 }
             }
         }
