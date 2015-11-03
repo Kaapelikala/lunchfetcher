@@ -4,7 +4,7 @@ class FunkyBurger extends Lunch
 {
     protected $url = "http://funkyburger.net/";
     protected $postData = array();
-    protected $refererUrl = "";
+    protected $refererUrl = null;
     protected $gzipped = false;
     protected $enabled = true;
 

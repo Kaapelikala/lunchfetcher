@@ -4,7 +4,7 @@ class Harald extends Lunch
 {
     protected $url = "http://www.ravintolaharald.fi/ruoka--ja-juomalistat/lounas";
     protected $postData = array();
-    protected $refererUrl = "";
+    protected $refererUrl = null;
     protected $gzipped = false;
     protected $enabled = true;
 

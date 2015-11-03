@@ -4,7 +4,7 @@ class Posti extends Lunch
 {
     protected $url = "http://www.fazer.fi/api/location/menurss/current?pageId=900&language=fi";
     protected $postData = array();
-    protected $refererUrl = "";
+    protected $refererUrl = null;
     protected $gzipped = false;
     protected $enabled = true;
 

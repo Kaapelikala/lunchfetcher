@@ -4,7 +4,7 @@ class Bruuveri extends Lunch
 {
     protected $url = "http://bruuveri.fi/lounas/";
     protected $postData = array();
-    protected $refererUrl = "";
+    protected $refererUrl = null;
     protected $gzipped = true;
     protected $enabled = true;
 
