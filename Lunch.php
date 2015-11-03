@@ -18,7 +18,7 @@ class Lunch
 
     protected function lunchesToSlack()
     {
-        $text = "Lunches for *".$this->today()."*".PHP_EOL;
+        $text = "*".$this->today()."*s lunches:".PHP_EOL;
 
         foreach ($this->lunches as $restaurant => $menu)
         {
