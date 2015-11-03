@@ -25,12 +25,10 @@ class Bruuveri extends Lunch
         $arr = array();
         $i = 0;
 
-        $lunchListInHTML = utf8_encode($doc->saveHTML($element->item(0)));
+        $lunchListInHTML = $doc->saveHTML($element->item(0));
         $lunchListInArray = explode('<hr class="mini">', $lunchListInHTML);
 
         foreach ($lunchListInArray as $lunchPerDay) {
-            $lunchPerDay = parent::cleanStr($lunchPerDay);
-
             $foods = preg_replace('/^[a-zA-Z]{2} [0-9]{1,2}\.[0-9]{1,2}\./', '', trim(strip_tags($lunchPerDay)));
             $foodsArray = explode(PHP_EOL, $foods);
 
